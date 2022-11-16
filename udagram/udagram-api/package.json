@@ -14,7 +14,7 @@
     "dev": "npx ts-node-dev --respawn --transpileOnly ./src/server.ts",
     "prod": "npx tsc && node ./server.js",
     "clean": "rm -rf www/ || true",
-    "deploy": "npm run build && eb list && eb use udagram-api-dev && eb deploy && eb setenv POSTGRES_HOST=$POSTGRES_HOST POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD POSTGRES_DB=$POSTGRES_DB DB_PORT=$DB_PORT PORT=$PORT JWT_SECRET=$JWT_SECRET URL=$URL AWS_BUCKET=$AWS_BUCKET AWS_REGION=$AWS_REGION AWS_PROFILE=$AWS_PROFILE",
+    "deploy": "npm run build && eb list && eb use udagram-api-dev && eb deploy && eb setenv POSTGRES_HOST=$POSTGRES_HOST POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD POSTGRES_DB=$POSTGRES_DB POSTGRES_PORT=$POSTGRES_PORT PORT=$PORT JWT_SECRET=$JWT_SECRET URL=$URL AWS_BUCKET=$AWS_BUCKET AWS_REGION=$AWS_REGION AWS_PROFILE=$AWS_PROFILE",
     "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
     "test": "SET ENV=test&& tsc && jasmine-ts"
   },
